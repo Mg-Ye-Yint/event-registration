@@ -4,9 +4,10 @@ import RegisteredList from "@/components/registered-list";
 import prisma from "@/helper/db";
 
 import React from "react";
+export const dynamic = "force-dynamic";
 
 const Admin = async () => {
-  const users: any = await prisma.user.findMany({
+  const users = await prisma.user.findMany({
     include: { events: { include: { event: true } } },
   });
 

@@ -1,15 +1,29 @@
 import React from "react";
 import RegisteredEvent from "./registered-event";
-import { User, Event } from "@prisma/client";
-import prisma from "@/helper/db";
+import { Status, User } from "@prisma/client";
 
 interface UserProps extends User {
-  events: Event[];
+  events: ({
+    event: {
+      id: string;
+      title: string;
+      category: string;
+      description: string;
+      time: string;
+      photoURL: string;
+      date: Date;
+      location: string;
+    };
+  } & {
+    id: string;
+    userId: string;
+    eventId: string;
+    status: Status | null;
+    registeredTime: Date;
+  })[];
 }
 
 const RegisteredList = async ({ user }: { user: UserProps }) => {
-  console.log(user);
-
   return (
     <div className="bg-slate-600 w-full  h-auto flex flex-col gap-4 p-2 rounded-md m-2">
       <div className="flex items-center justify-center gap-6">

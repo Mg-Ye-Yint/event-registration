@@ -79,7 +79,7 @@ model Event {
   category    String
   description String
   time        String
-  photoURL    String
+  photoURL    String       @db.Text
   date        DateTime
   location    String
   users       UserEvents[]

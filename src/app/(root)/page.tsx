@@ -27,8 +27,10 @@ export default async function Home() {
 
   const futureEvents = events.filter((event) => event.date >= currentDate);
 
+  console.log(futureEvents[0].photoURL);
+
   return (
-    <div className="grid grid-cols-4 sm:grid-cols-2 items-center justify-items-center m-2 gap-2">
+    <div className="grid grid-cols-4 sm:grid-cols-1 items-center justify-items-center m-2 gap-2">
       {futureEvents.map((event, index) => (
         <EventsDisplay
           key={index}

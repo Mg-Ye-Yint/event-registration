@@ -88,16 +88,21 @@ const EventsDisplay = ({
 
   return (
     <>
-      <div className="flex flex-col items-start justify-between h-full w-[200px] sm:w-[150px] p-3 bg-slate-600 gap-3 sm:gap-1 rounded-lg overflow-hidden">
-        <div className="space-y-3 overflow-x-auto max-w-full">
-          <img
-            src={event.photoURL}
-            alt="photo"
-            width={200}
-            height={200}
-            className="w-full h-auto object-fit "
-          />
-          <div className="flex flex-col items-start justify-start w-full min-w-max">
+      <div className="flex flex-col items-start justify-between h-full w-full sm:w-full p-3 bg-slate-600 gap-3 sm:gap-1 rounded-lg overflow-hidden">
+        <div className="space-y-3 max-w-full">
+          {isImageURL(event.photoURL) ? (
+            <img
+              src={event.photoURL}
+              alt="photo"
+              className="w-full h-[200px] object-cover"
+            />
+          ) : (
+            <div className="w-full h-[200px] flex items-center justify-center object-cover bg-black">
+              <p className="text-white">No Image</p>
+            </div>
+          )}
+
+          <div className="flex flex-col items-start justify-start w-full min-w-max overflow-x-auto">
             <div className="flex">
               <p className="font-bold text-white text-[18px]  whitespace-nowrap">
                 Event Name
@@ -118,7 +123,7 @@ const EventsDisplay = ({
               </p>
             </div>
           </div>
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center justify-center overflow-x-auto">
             <div className="flex items-start justify-between w-full min-w-max">
               <div className="flex flex-col items-center justify-center ">
                 <p className="font-semibold text-white text-[12px] whitespace-nowrap">

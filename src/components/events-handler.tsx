@@ -43,25 +43,21 @@ const EventsHandler = ({
 
   return (
     <>
-      <div className="flex flex-col items-start justify-between h-full w-[175px] sm:w-[100px]  p-3 bg-slate-600 gap-3 sm:gap-1 rounded-lg overflow-hidden">
-        <div className="space-y-3 overflow-x-auto max-w-full">
-          {/* Conditional rendering for the image */}
+      <div className="flex flex-col items-start justify-between h-full w-full sm:w-full  p-3 bg-slate-600 gap-3 sm:gap-1 rounded-lg overflow-hidden">
+        <div className="space-y-3 w-full">
           {isImageURL(event.photoURL) ? (
-            <Image
+            <img
               src={event.photoURL}
               alt="photo"
-              width={200}
-              height={200}
-              className="w-full h-auto object-fit"
+              className="w-full h-[200px] object-cover"
             />
           ) : (
-            <div className="w-full h-auto bg-black">
+            <div className="w-full h-[200px] flex items-center justify-center object-cover bg-black">
               <p className="text-white">No Image</p>
             </div>
           )}
 
-          {/* Event title and description */}
-          <div className="flex flex-col items-start justify-start w-full min-w-max">
+          <div className="flex flex-col overflow-x-auto  items-start justify-start w-full">
             <p className="font-semibold text-white text-[18px] whitespace-nowrap">
               {event.title}
             </p>
@@ -70,15 +66,16 @@ const EventsHandler = ({
             </p>
           </div>
 
-          {/* Event date and location */}
-          <div className="flex items-start justify-between w-full min-w-max">
-            <p className="font-semibold text-white text-[12px] whitespace-nowrap">
-              {event.date.toLocaleDateString()},
-            </p>
-            <p className="font-semibold text-white text-[12px] max-w-[150px] ml-1 whitespace-nowrap">
-              {event.time},
-            </p>
-            <p className="font-semibold text-white text-[12px] max-w-[150px] ml-1 whitespace-nowrap">
+          <div className="flex items-start justify-between w-full min-w-max overflow-x-auto">
+            <div className="flex flex-col ">
+              <p className="font-semibold text-white text-[12px]">
+                {event.date.toLocaleDateString()}
+              </p>
+              <p className="font-semibold text-white text-[12px] max-w-[150px]">
+                {event.time}
+              </p>
+            </div>
+            <p className="font-semibold text-white text-[12px] max-w-[150px] ml-1">
               {event.location}
             </p>
           </div>

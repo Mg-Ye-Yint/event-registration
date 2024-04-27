@@ -9,8 +9,6 @@ import axios from "axios";
 const RegisterForm = ({ user }: { user: User }) => {
   const session = useSession();
 
-  // console.log(user.id);
-
   const [name, setName] = useState(user?.name!);
   const [phoneNumber, setPhoneNumber] = useState(user?.phoneNumber!);
   const [birthDate, setBirthDate] = useState(

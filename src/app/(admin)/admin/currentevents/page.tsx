@@ -3,6 +3,7 @@ import CopyRight from "@/components/copy-right";
 import EventsHandler from "@/components/events-handler";
 import prisma from "@/helper/db";
 import React from "react";
+export const dynamic = "force-dynamic";
 
 const currentEvents = async () => {
   const events = await prisma.event.findMany({
@@ -27,7 +28,7 @@ const currentEvents = async () => {
           Current Events
         </p>
       </div>
-      <div className="grid grid-cols-4 sm:grid-cols-2 p-5 gap-8 items-center justify-items-center">
+      <div className="grid grid-cols-4 sm:grid-cols-1 p-5 gap-8 items-center justify-items-center">
         {futureEvents.map((event, index) => (
           <EventsHandler key={index} event={event} />
         ))}
